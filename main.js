@@ -1,13 +1,25 @@
-const express = require("express")
-const morgan = require("morgan")
+if (process.env.NODE_ENV !== 'production' || process.env.NODE_ENV === 'test') require('dotenv').config()
+
+const express = require('express')
 const app = express()
+const routes = require('./routes')
+const errorHandler =  require('./middlewares/errorHandler')
 
-app.use(morgan("tiny"))
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
 
-app.get('/mantap', (req, res) => {
-    res.json({name: "Kiko", id: "kepsek"})
+app.use('/', routes)
+
+app.use('*', (req, res) => {
+  res.status(404).json('The endpoint is not found')
 })
 
-app.listen(3000, _ => {
-    console.log("Listening on port 3000");
-})
+app.use(errorHandler)
+
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(process.env.PORT || 3000, () => {
+    console.log('Running on port', process.env.PORT || 3000)
+  })
+}
+
+module.exports = app
