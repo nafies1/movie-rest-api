@@ -1,3 +1,9 @@
+# Stockbit Backend
+1. [Simple Database Query](https://github.com/nafies1/movie-rest-api/blob/master/backend-test/1.%20Simple%20Database%20Query.sql)
+2. [Small ExpressJS Server](https://github.com/nafies1/movie-rest-api)
+3. [Refactor Code](https://github.com/nafies1/movie-rest-api/blob/master/backend-test/3.%20RefactorCode.js)
+4. [Logic test](https://github.com/nafies1/movie-rest-api/blob/master/backend-test/4.%20LogicTest.js)
+
 # movie-api
 
 Base API url : **http://localhost:3000**
